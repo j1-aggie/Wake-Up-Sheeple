@@ -1,46 +1,60 @@
 // from data.js
 var tableData = data;
 
-// Select the table body
-var tbody = d3.select("tbody")
-
-// loop through data and append rows to the table body
-
-tableData.forEach(function (ufo) {
-    var row = tbody.append("tr");
-    // use append method to insert table data for each row
-    Object.entries(ufo).forEach(function ([key, value]) {
-        //console.log(key, value)
-        //use append to insert a cell for each value
-        //use text to insert data to each cell
-        var cell = row.append("td").text(value);
-    });
-
-});
-
-// select the button and create function
+// Variables
 var button = d3.select("#filter-btn");
+var inputField1 = d3.select("#datetime");
+//var inputField2 = d3.select("#city");
+var tbody = d3.select("tbody");
+var resetbtn = d3.select("#reset-btn");
+var columns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
 
-button.on("click", function () {
-    //select the input and get html node
-    var inputElement = d3.Select(".form-control");
-    //get the value property of the input element
-    var inputDate = inputElement.property("value");
-    //console.log(inputDate)
-    //filter data for the date value to get data that is searched for
-    var filteredData = tableData.filter(ufo => ufo.datetime === inputDate);
-    //console.log(filteredData);
+var populate = (dataInput) => {
 
-    //select the table body to insert table rows and cells
-    var tbody = d3.select("tbody")
-    //clean the table body to insert selected date values
+    dataInput.forEach(ufo_sightings => {
+        var row = tbody.append("tr");
+        columns.forEach(column => row.append("td").text(ufo_sightings[column])
+        )
+    });
+}
+
+//Populate table
+populate(data);
+
+// Filter by attribute
+button.on("click", () => {
+    d3.event.preventDefault();
+    var inputDate = inputField1.property("value").trim();
+    //var inputCity = inputField2.property("value").toLowerCase().trim();
+    // Filter by field matching input value
+    var filterDate = data.filter(data => data.datetime === inputDate);
+    console.log(filterDate)
+    //var filterCity = data.filter(data => data.city === inputCity);
+    //console.log(filterCity)
+    var filterData = data.filter(data => data.datetime === inputDate);
+    console.log(filterData)
+
+    // Add filtered sighting to table
     tbody.html("");
 
-    //loop through filtered data to insert rows and cells for each object
-    filteredData.forEach(function (ufo) {
-        var row = tbody.append("tr");
-        Object.entries(ufo).forEach(function ([key, value]) {
-            var cell = row.append("td").text(value);
-        })
-    })
-});
+    let response = {
+        filterData, filterDate
+    }
+
+    if (response.filterData.length !== 0) {
+        populate(filterData);
+    }
+    else if (response.filterData.length === 0 && (response.filterDate.length !== 0)) {
+        populate(filterDate);
+
+    }
+    else {
+        tbody.append("tr").append("td").text("No results found!");
+    }
+})
+
+resetbtn.on("click", () => {
+    tbody.html("");
+    populate(data)
+    console.log("Table reset")
+})
