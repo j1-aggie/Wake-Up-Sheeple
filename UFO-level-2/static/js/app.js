@@ -1,59 +1,91 @@
-// from data.js
+// Starter Code
 var tableData = data;
 
-// Variables
+
+// Viewing the available data fromt he data.js
+// console.log(tableData);
+
+
+// Creating References
+var $tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
-var inputField1 = d3.select("#datetime");
-var inputField2 = d3.select("#city");
-var inputField3 = d3.select("state");
-var inputField4 = d3.select("country");
-var inputField5 = d3.select("shape");
-var tbody = d3.select("tbody");
+var inputFieldDate = d3.select("#datetime");
+var inputFieldCity = d3.select("#city");
+var inputFieldState = d3.select("#state");
+var inputFieldCountry = d3.select("#country");
+var inputFieldShape = d3.select("#shape");
 var resetbtn = d3.select("#reset-btn");
+
+
 var columns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
+// console.log(columns);
 
-var populate = (dataInput) => {
 
-    dataInput.forEach(ufo_sightings => {
-        var row = tbody.append("tr");
-        columns.forEach(column => row.append("td").text(ufo_sightings[column])
-        )
+
+// Input data into the HTML
+var addData = (dataInput) => {
+    dataInput.forEach(ufoSightings => {
+        var row = $tbody.append("tr");
+        columns.forEach(column => row.append("td").text(ufoSightings[column]))
     });
 }
 
-//Populate table
-populate(data);
+addData(tableData);
 
-// Filter by attribute
+
+// Create an Event Listener for the Button
+// Set up the Filter Button for Date and City
 button.on("click", () => {
-    d3.event.preventDefault();
-    var inputDate = inputField1.property("value").trim();
-    var inputCity = inputField2.property("value").toLowerCase().trim();
-    var inputState = inputField3.propery("value").toLowerCase().trim();
-    // Filter by field matching input value
-    var filterDate = data.filter(data => data.datetime === inputDate);
-    console.log(filterDate)
-    var filterCity = data.filter(data => data.city === inputCity);
-    console.log(filterCity)
-    var filterData = data.filter(data => data.datetime === inputDate && data.city === inputCity);
-    console.log(filterData)
 
-    // Add filtered sighting to table
-    tbody.html("");
+    d3.event.preventDefault();
+
+
+    var inputDate = inputFieldDate.property("value").trim();
+    // console.log(inputDate)
+
+    var inputCity = inputFieldCity.property("value").toLowerCase().trim();
+    // console.log(inputCity)
+
+    var inputState = inputFieldState.property("value").toLowerCase().trim();
+    // console.log(inputState)
+
+    var inputCountry = inputFieldCountry.property("value").toLowerCase().trim();
+    // console.log(inputCountry)
+
+    var inputShape = inputFieldShape.property("value").toLowerCase().trim();
+    // console.log(inputShape)
+
+    var filterDate = tableData.filter(tableData => tableData.datetime === inputDate);
+    // console.log(filterDate)
+    var filterCity = tableData.filter(tableData => tableData.city === inputCity);
+    // console.log(filterCity)
+    var filterState = tableData.filter(tableData => tableData.state === inputState);
+    // console.log(filterState)
+    var filterCountry = tableData.filter(tableData => tableData.country === inputCountry);
+    // console.log(filterCountry)
+    var filterShape = tableData.filter(tableData => tableData.shape === inputShape);
+    // console.log(filterShape)
+
+    var filterCombinedData = tableData.filter(tableData => tableData.datetime === inputDate && tableData.city === inputCity && tableData.state === inputState && tableData.country === inputCountry && tableData.shape === inputShape);
+    // console.log(filterCombinedData)
+
+    $tbody.html("");
 
     let response = {
-        filterData, filterCity, filterDate
+        filterDate,
+        filterCity,
+        filterState,
+        filterCountry,
+        filterShape,
+        filterCombinedData
     }
 
-    if (response.filterData.length !== 0) {
-        populate(filterData);
-    }
-    else if (response.filterData.length === 0 && ((response.filterCity.length !== 0 || response.filterDate.length !== 0))) {
-        populate(filterCity) || populate(filterDate);
-
-    }
-    else {
-        tbody.append("tr").append("td").text("No results found!");
+    if (response.filterCombinedData.length !== 0) {
+        addData(filterCombinedData);
+    } else if (response.filterCombinedData.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0 || response.filterState.length !== 0 || response.filterCountry.length !== 0 || response.filterShape.length !== 0))) {
+        addData(filterDate) || addData(filterCity) || addData(filterState) || addData(filterCountry) || addData(filterShape);
+    } else {
+        $tbody.append("tr").append("td").text("No Aliens Here! Keep Searching: ");
     }
 })
 
