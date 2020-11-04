@@ -4,7 +4,7 @@ var tableData = data;
 // Variables
 var button = d3.select("#filter-btn");
 var inputField1 = d3.select("#datetime");
-//var inputField2 = d3.select("#city");
+
 var tbody = d3.select("tbody");
 var resetbtn = d3.select("#reset-btn");
 var columns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
@@ -25,12 +25,11 @@ populate(data);
 button.on("click", () => {
     d3.event.preventDefault();
     var inputDate = inputField1.property("value").trim();
-    //var inputCity = inputField2.property("value").toLowerCase().trim();
+
     // Filter by field matching input value
     var filterDate = data.filter(data => data.datetime === inputDate);
     console.log(filterDate)
-    //var filterCity = data.filter(data => data.city === inputCity);
-    //console.log(filterCity)
+
     var filterData = data.filter(data => data.datetime === inputDate);
     console.log(filterData)
 
@@ -49,7 +48,7 @@ button.on("click", () => {
 
     }
     else {
-        tbody.append("tr").append("td").text("No results found!");
+        tbody.append("tr").append("td").text("No Aliens here!");
     }
 })
 
