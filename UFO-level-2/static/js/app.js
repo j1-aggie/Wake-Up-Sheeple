@@ -2,19 +2,16 @@
 var tableData = data;
 
 
-// Viewing the available data fromt he data.js
-// console.log(tableData);
 
-
-// Creating References
+// Variables
 var $tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
+//var resetbtn = d3.select("#reset-btn");
 var inputFieldDate = d3.select("#datetime");
 var inputFieldCity = d3.select("#city");
 var inputFieldState = d3.select("#state");
 var inputFieldCountry = d3.select("#country");
 var inputFieldShape = d3.select("#shape");
-var resetbtn = d3.select("#reset-btn");
 
 
 var columns = ["datetime", "city", "state", "country", "shape", "durationMinutes", "comments"]
@@ -23,14 +20,14 @@ var columns = ["datetime", "city", "state", "country", "shape", "durationMinutes
 
 
 // Input data into the HTML
-var addData = (dataInput) => {
-    dataInput.forEach(ufoSightings => {
+var populate = (dataInput) => {
+    dataInput.forEach(ufo_sightings => {
         var row = $tbody.append("tr");
-        columns.forEach(column => row.append("td").text(ufoSightings[column]))
+        columns.forEach(column => row.append("td").text(ufo_sightings[column]))
     });
 }
 
-addData(tableData);
+populate(data);
 
 
 // Create an Event Listener for the Button
@@ -55,18 +52,18 @@ button.on("click", () => {
     var inputShape = inputFieldShape.property("value").toLowerCase().trim();
     // console.log(inputShape)
 
-    var filterDate = tableData.filter(tableData => tableData.datetime === inputDate);
+    var filterDate = data.filter(data => data.datetime === inputDate);
     // console.log(filterDate)
-    var filterCity = tableData.filter(tableData => tableData.city === inputCity);
+    var filterCity = data.filter(data => data.city === inputCity);
     // console.log(filterCity)
-    var filterState = tableData.filter(tableData => tableData.state === inputState);
+    var filterState = data.filter(data => data.state === inputState);
     // console.log(filterState)
-    var filterCountry = tableData.filter(tableData => tableData.country === inputCountry);
+    var filterCountry = data.filter(data => data.country === inputCountry);
     // console.log(filterCountry)
-    var filterShape = tableData.filter(tableData => tableData.shape === inputShape);
+    var filterShape = data.filter(data => data.shape === inputShape);
     // console.log(filterShape)
 
-    var filterCombinedData = tableData.filter(tableData => tableData.datetime === inputDate && tableData.city === inputCity && tableData.state === inputState && tableData.country === inputCountry && tableData.shape === inputShape);
+    var filterCombinedData = data.filter(data => data.datetime === inputDate && data.city === inputCity && data.state === inputState && data.country === inputCountry && data.shape === inputShape);
     // console.log(filterCombinedData)
 
     $tbody.html("");
@@ -81,16 +78,16 @@ button.on("click", () => {
     }
 
     if (response.filterCombinedData.length !== 0) {
-        addData(filterCombinedData);
+        populate(filterCombinedData);
     } else if (response.filterCombinedData.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0 || response.filterState.length !== 0 || response.filterCountry.length !== 0 || response.filterShape.length !== 0))) {
-        addData(filterDate) || addData(filterCity) || addData(filterState) || addData(filterCountry) || addData(filterShape);
+        populate(filterDate) || populate(filterCity) || populate(filterState) || populate(filterCountry) || populate(filterShape);
     } else {
-        $tbody.append("tr").append("td").text("No Aliens Here! Keep Searching: ");
+        $tbody.append("tr").append("td").text("No Aliens Here!");
     }
 })
 
-resetbtn.on("click", () => {
-    tbody.html("");
-    populate(data)
-    console.log("Table reset")
-})
+//resetbtn.on("click", () => {
+    //tbody.html("");
+    //populate(data)
+    //console.log("Table Reset")
+//})

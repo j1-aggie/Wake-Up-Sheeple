@@ -1,4 +1,4 @@
-// from data.js
+// Starter code
 var tableData = data;
 
 // Variables
