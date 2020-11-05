@@ -6,11 +6,11 @@ WAKE UP SHEEPLE! The extra-terrestrial menace has come to Earth and we here at `
 
 There is just one tiny problem though... our collection is too large to search through manually. Even our most dedicated followers are complaining that they are having trouble locating specific reports in this mess.
 
-My code was added to the provided starter code for each level.  Within both sites, I appended a table dynamically based upon a [dataset we provide](StarterCode/static/js/data.js). Once on the Site, you can filter the table data for specific values. As requested, I only used pure JavaScript, HTML, and CSS, and D3.js on my web pages. They are the only coding languages which can be trusted.
+My code was added to the provided starter code for each level.  Within both sites, I appended a table dynamically based upon a [dataset we provide](https://github.com/j1-aggie/javascript-challenge). Once on the Site, you can filter the table data for specific values. As requested, I only used pure JavaScript, HTML, and CSS, and D3.js on my web pages. They are the only coding languages which can be trusted.
 
 ### Level 1: Automatic Table and Date Search (Required)
 
-* I used the [index.html](StarterCode/index.html) file provided as I saw at as a good starting point.  However, the background image was changed just becuase. 
+* I used the [index.html](https://github.com/j1-aggie/javascript-challenge) file provided as I saw at as a good starting point.  However, the background image was changed just becuase. 
 
 * I used the UFO dataset provided in the form of an array of JavaScript objects, wrote code that appends a table to the web page and then adds new rows of data for each UFO sighting.
 
@@ -34,7 +34,7 @@ My code was added to the provided starter code for each level.  Within both site
 
 ### Dataset
 
-* [UFO Sightings Data](StarterCode/static/js/data.js)
+* [UFO Sightings Data](https://github.com/j1-aggie/javascript-challenge)
 
 - - -
 
