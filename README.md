@@ -1,12 +1,15 @@
 # JavaScript Homework - JavaScript and DOM Manipulation
 
+![nasa](https://user-images.githubusercontent.com/66078772/98432522-b9ce2980-2084-11eb-862c-01bf08084ce0.jpg)
+
+
 ## Background
 
 WAKE UP SHEEPLE! The extra-terrestrial menace has come to Earth and we here at `ALIENS-R-REAL` have collected all of the eye-witness reports we could to prove it! All we need to do now is put this information online for the world to see and then the matter will finally be put to rest.
 
 There is just one tiny problem though... our collection is too large to search through manually. Even our most dedicated followers are complaining that they are having trouble locating specific reports in this mess.
 
-My code was added to the provided starter code for each level.  Within both sites, I appended a table dynamically based upon a [dataset we provide](https://github.com/j1-aggie/javascript-challenge). Once on the Site, you can filter the table data for specific values. As requested, I only used pure JavaScript, HTML, and CSS, and D3.js on my web pages. They are the only coding languages which can be trusted.
+My code was added to the provided starter code for each level.  Within both sites, I appended a table dynamically based upon a [dataset provided](https://github.com/j1-aggie/javascript-challenge). Once on the Site, you can filter the table data for specific values. As requested, I only used pure JavaScript, HTML, and CSS, and D3.js on my web pages. They are the only coding languages which can be trusted.
 
 ### Level 1: Automatic Table and Date Search (Required)
 
