@@ -21,7 +21,7 @@ My code was added to the provided starter code for each level.  Within both site
 
 * Used a date form in my HTML document and wrote JavaScript code that will listen for events and search through the `date/time` column to find rows that match user input.
 
-### Level 2: Multiple Search Categories (Optional)
+### Level 2: Multiple Search Categories 
 
 * Completed all of Level 1 criteria.
 
