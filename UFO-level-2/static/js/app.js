@@ -6,7 +6,6 @@ var tableData = data;
 // Variables
 var $tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
-//var resetbtn = d3.select("#reset-btn");
 var inputFieldDate = d3.select("#datetime");
 var inputFieldCity = d3.select("#city");
 var inputFieldState = d3.select("#state");
@@ -31,7 +30,7 @@ populate(data);
 
 
 // Create an Event Listener for the Button
-// Set up the Filter Button for Date and City
+// Set up the Filter Button for inputs
 button.on("click", () => {
 
     d3.event.preventDefault();
@@ -86,8 +85,3 @@ button.on("click", () => {
     }
 })
 
-//resetbtn.on("click", () => {
-    //tbody.html("");
-    //populate(data)
-    //console.log("Table Reset")
-//})
