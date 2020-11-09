@@ -19,13 +19,13 @@ My code was added to the provided starter code for each level.  Within both site
 
 * The webtable has a column for `date/time`, `city`, `state`, `country`, `shape`, and `comment`.
 
-* Used a date form in your HTML document and wrote JavaScript code that will listen for events and search through the `date/time` column to find rows that match user input.
+* Used a date form in my HTML document and wrote JavaScript code that will listen for events and search through the `date/time` column to find rows that match user input.
 
 ### Level 2: Multiple Search Categories (Optional)
 
 * Completed all of Level 1 criteria.
 
-* Using multiple `input` tags and/or select dropdowns, write JavaScript code so the user can to set multiple filters and search for UFO sightings using the following criteria based on the table columns:
+* Using multiple `input` tags and/or select dropdowns, wrote JavaScript code so the user can to set multiple filters and search for UFO sightings using the following criteria based on the table columns:
 
   1. `date/time`
   2. `city`
